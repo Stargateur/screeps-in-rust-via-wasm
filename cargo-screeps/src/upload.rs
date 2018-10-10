@@ -67,7 +67,8 @@ pub fn upload(root: &Path, config: &Configuration) -> Result<(), failure::Error>
         .body(serde_json::to_string(&RequestData {
             modules: files,
             branch: upload_config.branch.clone(),
-        })?).send()?;
+        })?)
+        .send()?;
 
     let response_text = response.text()?;
 
